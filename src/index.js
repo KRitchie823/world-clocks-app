@@ -10,6 +10,17 @@ function updateTime() {
     "h:mm:ss [<small>]A[</small>]"
   );
 
+  //New York
+  let newYorkElement = document.querySelector("#new-york");
+  let newYorkDateElement = newYorkElement.querySelector(".date");
+  let newYorkTimeElement = newYorkElement.querySelector(".time");
+  let newYorkTime = moment().tz("America/New_York");
+
+  newYorkDateElement.innerHTML = newYorkTime.format("MMMM Do, YYYY");
+  newYorkTimeElement.innerHTML = newYorkTime.format(
+    "h:mm:ss [<small>]A[</small>]"
+  );
+
   //Paris
   let parisElement = document.querySelector("#paris");
   let parisDateElement = parisElement.querySelector(".date");
@@ -18,6 +29,15 @@ function updateTime() {
 
   parisDateElement.innerHTML = parisTime.format("MMMM Do, YYYY");
   parisTimeElement.innerHTML = parisTime.format("h:mm:ss [<small>]A[</small>]");
+
+  //Tokyo
+  let tokyoElement = document.querySelector("#tokyo");
+  let tokyoDateElement = tokyoElement.querySelector(".date");
+  let tokyoTimeElement = tokyoElement.querySelector(".time");
+  let tokyoTime = moment().tz("Asia/Tokyo");
+
+  tokyoDateElement.innerHTML = tokyoTime.format("MMMM Do, YYYY");
+  tokyoTimeElement.innerHTML = tokyoTime.format("h:mm:ss [<small>]A[</small>]");
 }
 
 function updateCity(event) {
@@ -38,7 +58,11 @@ function updateCity(event) {
             "h:mm:ss"
           )} <small>${cityTime.format("A")}</small></div>
         </div>
+        <a href="index.html">All cities</a>
   `;
+  setTimeout(() => {
+    updateCity(event);
+  }, 1000);
 }
 
 updateTime();
